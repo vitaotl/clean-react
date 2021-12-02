@@ -1,0 +1,2 @@
+DOMAIN = regra de negocio (exemplo: autenticacao)
+DATA = implementacoes dos casos de uso
