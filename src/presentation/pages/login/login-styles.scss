@@ -14,20 +14,6 @@ body {
   background-color: $background;
 }
 
-input[type="password"],
-input[type="email"] {
-  border: 1px solid $primaryLight;
-  border-radius: 4px;
-
-  padding: 0 40px 0 8px;
-
-  line-height: 40px;
-
-  &:focus {
-    outline-color: $primaryLight;
-  }
-}
-
 button {
   background-color: $primary;
 
@@ -70,24 +56,7 @@ button {
       text-transform: uppercase;
     }
 
-    .inputWrap {
-      display: flex;
-      align-items: center;
-
-      position: relative;
-
-      input {
-        flex-grow: 1;
-      }
-
-      .status {
-        position: absolute;
-        right: 8px;
-        font-size: 12px;
-        cursor: help;
-      }
-
-    }
+    
 
     .link {
       margin-top: 16px;
@@ -102,15 +71,6 @@ button {
       }
     }
 
-    .errorWrap {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .spinner {
-      display: flex;
-    }
+    
   }
 }

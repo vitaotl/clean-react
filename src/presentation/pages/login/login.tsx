@@ -1,5 +1,7 @@
 import React from "react"
 import Footer from "./components/footer"
+import FormStatus from "./components/form-status"
+import Input from "./components/input"
 import LoginHeader from "./components/login-header"
 import Spinner from "./components/spinner/spinner"
 
@@ -11,24 +13,11 @@ const Login: React.FC = () => {
       <LoginHeader />
       <form action="" className={styles.form}>
         <h2>Login</h2>
-        <div className={styles.inputWrap}>
-          <input type="email" name="email" placeholder="Digite seu e-mail" />
-          <span className={styles.status}>X</span>
-        </div>
-        <div className={styles.inputWrap}>
-          <input
-            type="password"
-            name="password"
-            placeholder="Digite sua senha"
-          />
-          <span className={styles.status}>X</span>
-        </div>
+        <Input type="email" name="email" placeholder="Digite seu e-mail" />
+        <Input type="password" name="password" placeholder="Digite sua senha" />
         <button type="submit">Entrar</button>
         <span className={styles.link}>Criar conta</span>
-        <div className={styles.errorWrap}>
-          <Spinner className={styles.spinner} />
-          <span className={styles.error}>Erro</span>
-        </div>
+        <FormStatus />
       </form>
       <Footer />
     </div>
