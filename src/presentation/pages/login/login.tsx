@@ -3,7 +3,6 @@ import Footer from "./components/footer"
 import FormStatus from "./components/form-status"
 import Input from "./components/input"
 import LoginHeader from "./components/login-header"
-import Spinner from "./components/spinner/spinner"
 
 import styles from "./login-styles.scss"
 
