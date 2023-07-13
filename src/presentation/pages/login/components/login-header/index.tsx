@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import Logo from "../logo/logo"
+import Logo from "../logo"
 
 import styles from "./login-reader-styles.scss"
 
