@@ -1,5 +1,5 @@
 import React from "react"
-import { Footer, FormStatus, Input, LoginHeader } from "./components"
+import { Footer, FormStatus, Input, LoginHeader } from "../../components"
 
 import styles from "./login-styles.scss"
 

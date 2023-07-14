@@ -41,13 +41,7 @@ module.exports = {
     devMiddleware: {
       writeToDisk: true
     },
-    historyApiFallback: {
-      rewrites: [
-        { from: /^\/$/, to: '/views/landing.html' },
-        { from: /^\/subpage/, to: '/views/subpage.html' },
-        { from: /./, to: '/views/404.html' }
-      ]
-    }
+    historyApiFallback: true
   },
   externals: {
     react: 'React',

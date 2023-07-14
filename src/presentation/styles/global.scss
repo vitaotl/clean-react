@@ -1,0 +1,31 @@
+
+@import './colors.scss';
+
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background;
+}
+
+button {
+  background-color: $primary;
+
+  color: $white;
+  font-size: 16px;
+  line-height: 60px;
+
+  border-radius: 8px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .9;
+  }
+}
