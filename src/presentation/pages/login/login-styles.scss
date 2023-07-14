@@ -42,6 +42,18 @@
       }
     }
 
+    .submit {
+
+      &:disabled {
+        background-color: $disabledColor;
+        color: $disabledBackground;
+        cursor: auto;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
     
   }
 }
