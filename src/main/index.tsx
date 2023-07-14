@@ -3,6 +3,7 @@ import { Login } from "@/presentation/pages"
 import React from "react"
 import ReactDOM from "react-dom"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import '@/presentation/styles/global.scss'
 
 const router = createBrowserRouter([
   {
