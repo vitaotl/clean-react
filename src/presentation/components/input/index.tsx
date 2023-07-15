@@ -24,11 +24,11 @@ const Input: React.FC<Props> = (props: Props) => {
   }
 
   const getStatus = (): string => {
-    return "X"
+    return error ? "X" : "V"
   }
 
   const getTitle = (): string => {
-    return error
+    return error ?? "Tudo certo!"
   }
   return (
     <div className={styles.inputWrap}>

@@ -3,7 +3,8 @@ import { Login } from "@/presentation/pages"
 import React from "react"
 import ReactDOM from "react-dom"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import '@/presentation/styles/global.scss'
+import "@/presentation/styles/global.scss"
+import { ValidationSpy } from "@/presentation/test"
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/log-in",
-    element: <Login />
+    element: <Login validation={new ValidationSpy()} />
   }
 ])
 
-ReactDOM.render(<RouterProvider router={router} />, document.getElementById("main"))
+ReactDOM.render(
+  <RouterProvider router={router} />,
+  document.getElementById("main")
+)

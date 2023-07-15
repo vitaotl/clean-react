@@ -14,17 +14,26 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
     isLoading: false,
     email: "",
     password: "",
-    emailError: "Campo obrigatório",
-    passwordError: "Campo obrigatório",
-    mainError: ""
+    emailError: "",
+    passwordError: "",
+    mainError: "",
+    disabled: true
   })
 
   useEffect(() => {
-    validation.validate({ email: state.email })
+    setState((prev) => ({
+      ...prev,
+      emailError: validation.validate("email", state.email),
+      disabled: !!validation.validate("email", state.email)
+    }))
   }, [state.email])
 
   useEffect(() => {
-    validation.validate({ password: state.password })
+    setState((prev) => ({
+      ...prev,
+      passwordError: validation.validate("password", state.password),
+      disabled: !!validation.validate("password", state.password)
+    }))
   }, [state.password])
 
   return (
@@ -42,7 +51,7 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
           <button
             data-testid="submit"
             type="submit"
-            disabled
+            disabled={state.disabled}
             className={styles.submit}
           >
             Entrar
