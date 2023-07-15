@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import React, { useState, useEffect } from "react"
 import { Footer, FormStatus, Input, LoginHeader } from "../../components"
 import Context from "@/presentation/contexts/form/form-context"
 
 import styles from "./login-styles.scss"
 import { Validation } from "@/presentation/protocols/validation"
+import { Authentication } from "@/domain/usecases"
 
 type Props = {
   validation: Validation
+  authentication: Authentication
 }
 
-const Login: React.FC<Props> = ({ validation }: Props) => {
+const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
   const [state, setState] = useState({
     isLoading: false,
     email: "",
@@ -21,26 +24,44 @@ const Login: React.FC<Props> = ({ validation }: Props) => {
   })
 
   useEffect(() => {
+    const validated = validation.validate("email", state.email)
+
     setState((prev) => ({
       ...prev,
-      emailError: validation.validate("email", state.email),
-      disabled: !!validation.validate("email", state.email)
+      emailError: validated,
+      disabled: !!validated
     }))
   }, [state.email])
 
   useEffect(() => {
+    const validated = validation.validate("password", state.password)
+
     setState((prev) => ({
       ...prev,
-      passwordError: validation.validate("password", state.password),
-      disabled: !!validation.validate("password", state.password)
+      passwordError: validated,
+      disabled: !!validated
     }))
   }, [state.password])
 
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
+    e.preventDefault()
+    setState((prev) => ({
+      ...prev,
+      isLoading: true
+    }))
+
+    await authentication.auth({
+      email: state.email,
+      password: state.password
+    })
+  }
   return (
     <div className={styles.login}>
       <LoginHeader />
       <Context.Provider value={{ state, setState }}>
-        <form action="" className={styles.form}>
+        <form action="" className={styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
           <Input type="email" name="email" placeholder="Digite seu e-mail" />
           <Input
