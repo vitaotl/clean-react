@@ -6,6 +6,7 @@ import Context from "@/presentation/contexts/form/form-context"
 import styles from "./login-styles.scss"
 import { Validation } from "@/presentation/protocols/validation"
 import { Authentication } from "@/domain/usecases"
+import { Link } from "react-router-dom"
 
 type Props = {
   validation: Validation
@@ -72,7 +73,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       <LoginHeader />
       <Context.Provider value={{ state, setState }}>
         <form
-          data-testId="form"
+          data-testid="form"
           action=""
           className={styles.form}
           onSubmit={handleSubmit}
@@ -92,7 +93,9 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
           >
             Entrar
           </button>
-          <span className={styles.link}>Criar conta</span>
+          <Link data-testid="signup" to="/signup" className={styles.link}>
+            Criar conta
+          </Link>
           <FormStatus />
         </form>
       </Context.Provider>

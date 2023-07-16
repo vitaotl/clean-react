@@ -19,7 +19,7 @@ const MyRouter: React.FC = () => {
     <Router>
       <Routes>
         <Route
-          path="/login"
+          path="/log-in"
           element={
             <Login
               validation={new ValidationSpy()}
