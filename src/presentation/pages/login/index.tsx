@@ -47,16 +47,24 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault()
-    if (state.isLoading || state.emailError || state.passwordError) return
-    setState((prev) => ({
-      ...prev,
-      isLoading: true
-    }))
+    try {
+      if (state.isLoading || state.emailError || state.passwordError) return
+      setState((prev) => ({
+        ...prev,
+        isLoading: true
+      }))
 
-    await authentication.auth({
-      email: state.email,
-      password: state.password
-    })
+      await authentication.auth({
+        email: state.email,
+        password: state.password
+      })
+    } catch (error) {
+      setState((prev) => ({
+        ...prev,
+        isLoading: false,
+        mainError: error.message
+      }))
+    }
   }
   return (
     <div className={styles.login}>
