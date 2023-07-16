@@ -12,6 +12,8 @@ import { InvalidCredentialsError } from "@/domain/errors"
 
 import { faker } from "@faker-js/faker"
 import "jest-localstorage-mock"
+import { BrowserRouter, Router } from "react-router-dom"
+import { createMemoryHistory } from "history"
 
 type SutTypes = {
   sut: RenderResult
@@ -23,6 +25,8 @@ type SutTParams = {
   validationError: string
 }
 
+const history = createMemoryHistory({ initialEntries: ["/"] })
+
 const makeSut = (params?: SutTParams): SutTypes => {
   const validationSpy = new ValidationSpy()
   const authenticationSpy = new AuthenticationSpy()
@@ -30,7 +34,9 @@ const makeSut = (params?: SutTParams): SutTypes => {
   validationSpy.errorMessage = params?.validationError
 
   const sut = render(
-    <Login validation={validationSpy} authentication={authenticationSpy} />
+    <Router location={history.location} navigator={history}>
+      <Login validation={validationSpy} authentication={authenticationSpy} />
+    </Router>
   )
   return { sut, validationSpy, authenticationSpy }
 }
@@ -228,5 +234,15 @@ describe("Login Component", () => {
       "accessToken",
       authenticationSpy.account.accessToken
     )
+  })
+
+  test("Should go to signup page", () => {
+    const { sut } = makeSut()
+    simulateValidSubmit(sut)
+    const register = sut.getByTestId("signup")
+    fireEvent.click(register)
+
+    expect(history.index).toBe(1)
+    expect(history.location.pathname).toBe("/signup")
   })
 })
