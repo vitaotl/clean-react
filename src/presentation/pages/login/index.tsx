@@ -47,6 +47,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
     e: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     e.preventDefault()
+    if (state.isLoading) return
     setState((prev) => ({
       ...prev,
       isLoading: true
