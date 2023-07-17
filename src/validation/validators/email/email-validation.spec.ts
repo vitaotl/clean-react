@@ -23,4 +23,10 @@ describe("EmailValidation", () => {
     const error = sut.validate(faker.internet.email())
     expect(error).toBeFalsy()
   })
+
+  test("Should falsy if email is empty", () => {
+    const { sut } = makeSut("email")
+    const error = sut.validate('')
+    expect(error).toBeFalsy()
+  })
 })
