@@ -38,10 +38,11 @@ module.exports = {
     }]
   },
   devServer: {
+    static: './public',
+    historyApiFallback: true,
     devMiddleware: {
-      writeToDisk: true
-    },
-    historyApiFallback: true
+      writeToDisk: true,
+    }
   },
   externals: {
     react: 'React',
