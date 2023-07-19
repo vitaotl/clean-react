@@ -1,4 +1,3 @@
-import { Login, Logout } from "@/presentation/pages"
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -11,7 +10,6 @@ const MyRouter: React.FC<Props> = ({ makeLogin }: Props) => {
     <Router>
       <Routes>
         <Route path="/log-in" Component={makeLogin} />
-        <Route path="/" element={<Logout size={3} />} />
       </Routes>
     </Router>
   )
