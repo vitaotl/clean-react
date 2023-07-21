@@ -67,7 +67,7 @@ const Login: React.FC<Props> = ({
       })
       await saveAccessToken.save(account.accessToken)
       navigate("/", { replace: true })
-    } catch (error) {
+    } catch (error) {   
       setState((prev) => ({
         ...prev,
         isLoading: false,
